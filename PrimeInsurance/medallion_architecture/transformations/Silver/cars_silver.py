@@ -71,7 +71,7 @@ def cars_silver():
 # 4. APPEND BAD DATA TO CENTRAL DQ LOG
 # ==============================================================================
 
-@dlt.append_flow(target="dq_issues", name="append_cars_dq_flow")
+@dlt.append_flow(target="primeinsurance.silver.dq_issues", name="append_cars_dq_flow")
 def append_cars_dq():
     df = transform_cars()
     

@@ -81,7 +81,7 @@ def transform_claims():
     # ==============================================================================
     # ENRICHMENT & BUCKET CALCULATIONS
     # ==============================================================================
-    policy_df = dlt.read("policy_silver").select(
+    policy_df = dlt.read("primeinsurance.silver.policy_silver").select(
         F.col("policy_number").cast("string").alias("PolicyID"), 
         "policy_bind_date"
     )
@@ -119,7 +119,7 @@ def claims_silver():
 # ==============================================================================
 # 4. APPEND BAD DATA TO CENTRAL DQ LOG
 # ==============================================================================
-@dlt.append_flow(target="dq_issues", name="append_claims_dq_flow")
+@dlt.append_flow(target="primeinsurance.silver.dq_issues", name="append_claims_dq_flow")
 def append_claims_dq():
     df = transform_claims()
     

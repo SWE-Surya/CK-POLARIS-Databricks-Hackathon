@@ -67,7 +67,7 @@ def policy_silver():
 # 4. APPEND BAD DATA TO CENTRAL QUARANTINE LOG
 # ==============================================================================
 # 🏆 FIX: Changed target to "quarantine_table"
-@dlt.append_flow(target="dq_issues", name="append_policy_dq_flow")
+@dlt.append_flow(target="primeinsurance.silver.dq_issues", name="append_policy_dq_flow")
 def append_policy_dq():
     df = transform_policy()
     

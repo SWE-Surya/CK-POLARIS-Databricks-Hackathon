@@ -64,7 +64,7 @@ dlt.create_streaming_table(
 )
 
 dlt.apply_changes(
-    target="customers_silver",
+    target="primeinsurance.silver.customers_silver",
     source="customers_scored_source",
     keys=["CustomerID"],
     sequence_by="cdc_sequence_key", 
@@ -74,7 +74,7 @@ dlt.apply_changes(
 # ==============================================================================
 # 4. ROUTE THE BAD DATA TO DQ LOG
 # ==============================================================================
-@dlt.append_flow(target="dq_issues", name="append_customers_dq_flow")
+@dlt.append_flow(target="primeinsurance.silver.dq_issues", name="append_customers_dq_flow")
 def append_customers_dq():
     df = dlt.read_stream("customers_scored_source")
     
